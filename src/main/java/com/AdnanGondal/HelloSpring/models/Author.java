@@ -1,5 +1,8 @@
 package com.AdnanGondal.HelloSpring.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -32,7 +35,8 @@ public class Author {
 	private String lastName;
 	
 	@ManyToMany(mappedBy="authors")
-	private Set<Book> books;
+	@JsonIgnore
+	private Set<Book> books = new HashSet<>();
 	
 	public Author() {
 		
@@ -40,11 +44,10 @@ public class Author {
 
 
 
-	public Author(String firstName, String lastName, Set<Book> books) {
+	public Author(String firstName, String lastName) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.books = books;
 	}
 
 
@@ -98,7 +101,7 @@ public class Author {
 
 	@Override
 	public String toString() {
-		return "Author [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", books=" + books + "]";
+		return "Author [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + "]";
 	}
 	
 	

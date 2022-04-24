@@ -1,4 +1,4 @@
-package com.AdnanGondal.HelloSpring;
+package com.AdnanGondal.HelloSpring.controllers;
 
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -19,7 +19,7 @@ public class GreetingController {
 	
 	// map requests to greeting end-point, to the greeting method
 	// these exist for other methods, e.g. PostMapping
-	@GetMapping("/greeting")      // query string
+	@GetMapping("/api/greeting")      // query string
 	public Greeting greeting(@RequestParam(value = "name", defaultValue = "World") String name) {
 		return new Greeting(counter.incrementAndGet(), String.format(template, name));
 	}
